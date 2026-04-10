@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1915 South — Award Certificate</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy:   #00384A;
+    --blue:   #3F738D;
+    --icy:    #DBECF1;
+    --gray:   #EDEDED;
+    --orange: #F68C2C;
+    --yellow: #b8cfd8;
+    --clay:   #595959;
+    --white:  #FFFFFF;
+  }
+
+  body {
+    background: #e8eced;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    padding: 28px 20px;
+  }
+
+  /* CONTROLS */
+  .controls {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 14px 20px;
+    margin-bottom: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    width: 100%;
+    max-width: 980px;
+    align-items: flex-end;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
+
+  .control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    min-width: 150px;
+  }
+
+  .control-group label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--blue);
+  }
+
+  .control-group input,
+  .control-group select {
+    background: #f7f9fa;
+    border: 1px solid #cdd8dc;
+    border-radius: 3px;
+    color: var(--navy);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12.5px;
+    padding: 7px 9px;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .control-group input:focus,
+  .control-group select:focus { border-color: var(--orange); }
+
+  .print-btn {
+    background: var(--orange);
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 9px 20px;
+    cursor: pointer;
+    transition: opacity 0.15s;
+    white-space: nowrap;
+    align-self: flex-end;
+  }
+  .print-btn:hover { opacity: 0.85; }
+
+  /* CERTIFICATE */
+  .cert-wrap {
+    width: 980px;
+    aspect-ratio: 1.414 / 1;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  }
+
+  .cert {
+    width: 100%;
+    height: 100%;
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  /* ── TOP LOGO AREA (matches slide 1 layout) ── */
+  .cert-top {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 36px 60px 0;
+  }
+
+  /* Logo lockup — exact match to PPT */
+  .logo-lockup {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .logo-1915-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+  }
+
+  /* Double chevron SVG */
+  .chevron-mark {
+    margin-bottom: 3px;
+  }
+
+  .logo-1915-num {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+
+  .logo-south {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.38em;
+    color: var(--navy);
+    margin-top: 1px;
+  }
+
+  .logo-divider {
+    width: 1px;
+    height: 52px;
+    background: #ccc;
+  }
+
+  .ashley-block {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .ashley-word {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--navy);
+  }
+
+  /* ── YELLOW HIGHLIGHT TITLE — matches PPT "Slide Deck Title" style ── */
+  .cert-title-area {
+    margin-top: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .award-highlight {
+    background: var(--yellow);
+    padding: 5px 18px;
+    display: inline-block;
+  }
+
+  .award-highlight-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .award-quarter-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--blue);
+  }
+
+  /* ── RECIPIENT AREA ── */
+  .cert-recipient-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 80px;
+    position: relative;
+  }
+
+  /* Watermark */
+  .watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 180px;
+    font-weight: 800;
+    color: rgba(0, 56, 74, 0.03);
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .presented-to {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 4px;
+  }
+
+  .recipient-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 58px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--navy);
+    line-height: 1.05;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .recipient-store {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-top: 3px;
+    margin-bottom: 14px;
+  }
+
+  /* Thin orange rule */
+  .orange-rule {
+    width: 48px;
+    height: 3px;
+    background: var(--orange);
+    margin: 0 auto 14px;
+  }
+
+  .recognition-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14.5px;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--clay);
+    text-align: center;
+    line-height: 1.7;
+    max-width: 640px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── SIGNATURES ── */
+  .cert-sigs {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    padding: 0 80px 20px;
+  }
+
+  .sig-script {
+    font-family: 'Dancing Script', cursive;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.1;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+
+  .sig-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+  }
+
+  .sig-line {
+    width: 100%;
+    height: 1px;
+    background: var(--navy);
+    opacity: 0.25;
+    margin-bottom: 6px;
+  }
+
+  .sig-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--navy);
+    letter-spacing: 0.04em;
+  }
+
+  .sig-role {
+    font-size: 8px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--clay);
+    opacity: 0.7;
+    text-align: center;
+    margin-top: 2px;
+  }
+
+  /* ── FOOTER — exact match to PPT slide footer ── */
+  .cert-footer {
+    flex: 0 0 auto;
+    height: 52px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px 0 0;
+  }
+
+  /* Icy blue gradient fill — matching the PPT footer */
+  .footer-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, #b8cfd8, #DBECF1 60%, #e8f3f7);
+    z-index: 0;
+  }
+
+  .footer-copyright {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    text-align: center;
+    font-size: 8px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: var(--clay);
+  }
+
+  .footer-right {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .footer-nineteen {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: var(--navy);
+    white-space: nowrap;
+  }
+
+  /* Date box — yellow highlight like PPT */
+  .date-box {
+    position: absolute;
+    top: -18px;
+    right: 0;
+    background: var(--yellow);
+    padding: 3px 10px;
+    font-size: 8.5px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--navy);
+    z-index: 2;
+    white-space: nowrap;
+  }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .controls { display: none; }
+    .cert-wrap { width: 100%; box-shadow: none; }
+    .cert { height: 100vh; }
+  }
+</style>
+</head>
+<body>
+
+<div class="controls">
+  <div class="control-group">
+    <label>Recipient Name</label>
+    <input type="text" id="recipientName" value="Jane Smith" oninput="update()">
+  </div>
+  <div class="control-group">
+    <label>Store / Location</label>
+    <input type="text" id="storeName" value="Pensacola — Gulf Coast" oninput="update()">
+  </div>
+  <div class="control-group">
+    <label>Award Title</label>
+    <select id="awardTitle" onchange="update()">
+      <optgroup label="── Organizational Awards ──">
+        <option>Written Revenue — 1st Place</option>
+        <option>Written Revenue — 2nd Place</option>
+        <option>Written Revenue — 3rd Place</option>
+        <option>Written Revenue — 4th Place</option>
+        <option>Written Revenue — 5th Place</option>
+        <option>Application Total — 1st Place</option>
+        <option>Application Total — 2nd Place</option>
+        <option>Application Total — 3rd Place</option>
+        <option>Application Total — 4th Place</option>
+        <option>Application Total — 5th Place</option>
+        <option>Bedding Revenue — 1st Place</option>
+        <option>Bedding Revenue — 2nd Place</option>
+        <option>Bedding Revenue — 3rd Place</option>
+        <option>Bedding Revenue — 4th Place</option>
+        <option>Bedding Revenue — 5th Place</option>
+        <option>Protection Revenue — 1st Place</option>
+        <option>Protection Revenue — 2nd Place</option>
+        <option>Protection Revenue — 3rd Place</option>
+        <option>Protection Revenue — 4th Place</option>
+        <option>Protection Revenue — 5th Place</option>
+        <option>Rising Star — 1st Place (SPH)</option>
+        <option>Rising Star — 2nd Place (SPH)</option>
+        <option>Rising Star — 3rd Place (SPH)</option>
+        <option>Store of the Quarter</option>
+        <option>SPG to Budget — Top Store</option>
+        <option>Application % — Top Store</option>
+        <option>BSPG to Budget — Top Store</option>
+        <option>Protected and Delivered</option>
+      </optgroup>
+      <optgroup label="── Store Team Awards ──">
+        <option>Top Sales Consultant</option>
+        <option>Top Written Revenue</option>
+        <option>Top Application Total</option>
+        <option>Top Bedding Revenue</option>
+        <option>Top Protection Revenue</option>
+        <option>Top SPH</option>
+        <option>Most Improved</option>
+        <option>Rising Star</option>
+        <option>Guest Experience Award</option>
+        <option>Team Player of the Quarter</option>
+        <option>Rookie of the Quarter</option>
+        <option>Leadership Award</option>
+        <option>Custom Award</option>
+      </optgroup>
+    </select>
+  </div>
+  <div class="control-group">
+    <label>Custom Award Title</label>
+    <input type="text" id="customAward" placeholder="Override award title..." oninput="update()">
+  </div>
+  <div class="control-group">
+    <label>Quarter</label>
+    <select id="quarter" onchange="update()">
+      <option selected>Q1 2026</option>
+      <option>Q2 2026</option>
+      <option>Q3 2026</option>
+      <option>Q4 2026</option>
+    </select>
+  </div>
+  <div class="control-group">
+    <label>Presenter Name</label>
+    <input type="text" id="presenterName" value="Frank Pina" oninput="update()">
+  </div>
+  <div class="control-group">
+    <label>Presenter Title</label>
+    <input type="text" id="presenterTitle" value="VP of Sales &amp; Operations" oninput="update()">
+  </div>
+  <div class="control-group">
+    <label>2nd Signer Name</label>
+    <input type="text" id="signer2Name" value="Justin Woods" oninput="update()">
+  </div>
+  <div class="control-group">
+    <label>2nd Signer Title</label>
+    <input type="text" id="signer2Title" value="President" oninput="update()">
+  </div>
+  <button class="print-btn" onclick="window.print()">🖨 Print</button>
+</div>
+
+<!-- CERTIFICATE -->
+<div class="cert-wrap">
+  <div class="cert">
+
+    <!-- TOP -->
+    <div class="cert-top">
+
+      <!-- Logo — matching PPT exactly -->
+      <div class="logo-lockup">
+        <div class="logo-1915-block">
+          <!-- Double chevron -->
+          <svg class="chevron-mark" width="28" height="14" viewBox="0 0 28 14" fill="none">
+            <polyline points="4,2 14,8 24,2" stroke="#00384A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <polyline points="4,7 14,13 24,7" stroke="#00384A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+          <div class="logo-1915-num">1915</div>
+          <div class="logo-south">SOUTH</div>
+        </div>
+
+        <div class="logo-divider"></div>
+
+        <div class="ashley-block">
+          <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCABGAEMDASIAAhEBAxEB/8QAHAABAAICAwEAAAAAAAAAAAAAAAYHAQQCAwUI/8QAORAAAAUCAQULDQEAAAAAAAAAAAECAwQFBhEHEkFRYRMUFiExNlJVcpTRFyIjMjRCdIGTsbLBwvD/xAAaAQEBAAMBAQAAAAAAAAAAAAAABgIDBQEE/8QAKxEAAQMDAQUIAwAAAAAAAAAAAQADBAIFETESFEGR4RMhI1FUYcHRFXGh/9oADAMBAAIRAxEAPwD7LAABEAABEAABEAABEAABEAABEABF79u6PbsTcWc16oup9G3oQXSVs2aRokyW4zZddOAFujx3JDgbbGSUvy7Y9uxNxZzXqi6n0behBdJWzZpHRk+vFqvsFDmGhqpNp4y5CeIveTt1l/ig9m2xPu2pLqtVdd3oa8XXVH5zyuinZt0chbM33acm2ZqKrSVu7yzyNC0medHVoIz1aj+R7ZM3S4k78KPB02eOPPr8KmFugAbkavF8/fy6fKuYBEMn14tV5gocxSWqk2njLkJ4i95O3WX+KXiriympTQdaOQVNSYzkZwtuDBCAAD6FoQAAEUev24VW5RN9NM7rIdXuTJH6qVYGeJ7Cw5BXNlWzNuypuVarOOKibpnOuKPzn1dFOzWejkLZKMt/N+F8V/Ch6mSbmRE7bn5mJWS1v137B45ooGccM92vNUkdzc7X2zQxXUcZ9u/TkpPGYZjR0R47SGmm05qEILAklqIZkMtSGFsPtodacSaVoUWJKI9BkOYCp2RjZx3Kc2jnPFUxfdqyranpqtKN0oOeSkLSZ50dWPERnq1H8j2z/J1crlxUpw5LebKjGlDqi9VeJcSi1ch4kO3KZzGqXZR+aRGchnstV7bX2UJVlkQLxSyycUVgkjhx05fCpXXd9tRddGaqDgHjw+1ZIAAq1MoAACKAZb+b8L4r+FCKWxfsuhUdqmtQGHkNqUZLUsyM8TM/2LinQYU5tLc6HHlISeclLzZLIj14GNTg7b/UVM7o34CdmWmU5MMmO6KSRjRd2Lc41EUR32zUAc6qu/KrUOqov1FB5Vah1VF+ooWJwdt/qKmd0b8A4O2/1FTO6N+Aw/H3f1I5dFnv1r9P/eqqy4coMys0aRTHacw0h8iI1pWZmWCiP9D3chnstV7bX2UJtwdt/qKmd0b8BtQafAgEsoMKNFJeBqJlpKM7DkxwLjGUW0S6ZlEmQ6KtkEaex+15JukaqJVHYbNOSDr+vpbIAAo1wEAABEAABEAABEAABEAABF//2Q==" style="width:32px;height:32px;object-fit:contain;">
+          <div class="ashley-word">ASHLEY</div>
+        </div>
+      </div>
+
+      <!-- Award title with yellow highlight — PPT style -->
+      <div class="cert-title-area">
+        <div class="award-highlight">
+          <div class="award-highlight-text" id="certAwardTitle">Written Revenue — 1st Place</div>
+        </div>
+        <div class="award-quarter-label" id="certQuarter">Q1 2026 · Certificate of Excellence</div>
+      </div>
+
+    </div>
+
+    <!-- RECIPIENT -->
+    <div class="cert-recipient-area">
+      <div class="watermark">1915</div>
+
+      <div class="presented-to">Proudly Presented To</div>
+      <div class="recipient-name" id="certRecipient">Jane Smith</div>
+      <div class="recipient-store" id="certStore">Pensacola — Gulf Coast</div>
+      <div class="orange-rule"></div>
+      <div class="recognition-text" id="certBodyText">
+        At 1915 South, we believe every guest deserves an extraordinary experience — and you proved what that looks like at the highest level.
+      </div>
+    </div>
+
+    <!-- SIGNATURES -->
+    <div class="cert-sigs">
+      <div class="sig-block">
+        <div class="sig-script" id="presenterSig">Frank Pina</div>
+        <div class="sig-line"></div>
+        <div class="sig-name" id="presenterSigName">Frank Pina</div>
+        <div class="sig-role" id="presenterSigTitle">VP of Sales &amp; Operations</div>
+      </div>
+      <div class="sig-block">
+        <div class="sig-script" id="signer2Sig">Justin Woods</div>
+        <div class="sig-line"></div>
+        <div class="sig-name" id="signer2SigName">Justin Woods</div>
+        <div class="sig-role" id="signer2SigTitle">President</div>
+      </div>
+    </div>
+
+    <!-- FOOTER — PPT style icy blue gradient -->
+    <div class="cert-footer">
+      <div class="footer-bg"></div>
+      <div class="date-box" id="dateBox">Q1 · 2026</div>
+      <div class="footer-copyright"></div>
+      <div class="footer-right">
+        <div class="footer-nineteen">NINETEEN &amp; FIFTEEN</div>
+        <img src="data:image/png;base64,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" style="width:18px;height:18px;object-fit:contain;">
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  const bodyText = {
+    "Written Revenue — 1st Place": "At 1915 South, we believe every guest deserves an extraordinary experience — and you proved what that looks like at the highest level. Leading our entire organization in written revenue means you showed up, you connected, and you delivered results that moved the whole organization forward. We are proud of you and excited for everything still ahead.",
+    "Written Revenue — 2nd Place": "At 1915 South, we are built on the belief that genuine connection drives extraordinary outcomes. Finishing second in the organization in written revenue reflects a commitment to the guest experience that separates great consultants from good ones. You are making a real impact — keep pushing, because the best is still in front of you.",
+    "Written Revenue — 3rd Place": "At 1915 South, excellence starts with how we treat every single guest who walks through our doors. Earning a top-three finish in written revenue is a reflection of your dedication, your consistency, and your belief in the process. We see your effort and we are proud to recognize it. Keep going — you are building something great.",
+    "Written Revenue — 4th Place": "At 1915 South, greatness is built one guest interaction at a time. A top-five organizational finish in written revenue speaks to your work ethic and your commitment to delivering real value. You are exactly the kind of consultant this organization is built on — and we are just getting started.",
+    "Written Revenue — 5th Place": "At 1915 South, performance at every level matters. Finishing in the top five in written revenue across our organization is something to be proud of. You bring energy and effort every day, and this organization is better for it. Keep investing in your craft — the ceiling is high and you are climbing.",
+    "Application Total — 1st Place": "At 1915 South, we believe every guest deserves to know their buying power — and you made sure more guests had that knowledge than anyone else in the organization. Leading in application total means you had the conversation with confidence, removed the barriers, and gave families the ability to say yes to the home they deserved. That is the mission, and you led it.",
+    "Application Total — 2nd Place": "At 1915 South, unlocking a guest's buying power is one of the most powerful things we can do for them. Finishing second in the organization in application total means you consistently had that conversation, gave guests clarity on what they could afford, and expanded what was possible for their home. That impact goes far beyond the sale.",
+    "Application Total — 3rd Place": "At 1915 South, every guest who walks in deserves to understand their buying power before they walk out. A top-three organizational finish in applications tells us you are having that conversation consistently and with real conviction — putting guests in control of their decision and giving them every reason to say yes. We are proud of that commitment.",
+    "Application Total — 4th Place": "At 1915 South, showing a guest their buying power changes the entire conversation — and you are doing that at an elite level. A top-five organizational finish in applications reflects a consultant who understands that financing is not a last resort, it is a first step. Keep bringing that mindset to every guest. It is making a real difference.",
+    "Application Total — 5th Place": "At 1915 South, giving every guest access to their buying power is one of the most meaningful things we do. Your top-five organizational finish in applications means you are doing exactly that — opening doors, creating options, and making sure no guest ever leaves without knowing what is possible. That foundation is going to take you far.",
+    "Bedding Revenue — 1st Place": "At 1915 South, the healthy sleep conversation is one of the most important things we do for our guests — and you led the entire organization in having it. First place in bedding revenue is not just a number. It means you believed in the mission, started the conversation consistently, and helped more families invest in the rest they deserve than anyone else. That is extraordinary.",
+    "Bedding Revenue — 2nd Place": "At 1915 South, the healthy sleep conversation changes lives — and you had it more meaningfully than almost anyone in the organization. Second in bedding revenue reflects a consultant who does not skip the sleep tour, does not rush the pillow conversation, and genuinely believes that rest is a health decision. That conviction is showing up in your results. Keep it going.",
+    "Bedding Revenue — 3rd Place": "At 1915 South, great bedding results come from one place — a consultant who starts the healthy sleep conversation every single time. A top-three organizational finish in bedding revenue tells us you are doing exactly that, with consistency and genuine care. Your guests are sleeping better because of you. We are proud of that.",
+    "Bedding Revenue — 4th Place": "At 1915 South, every healthy sleep conversation you start is an act of real service to your guest. A top-five organizational finish in bedding revenue means you are having that conversation, building value around rest and wellness, and helping guests make one of the best investments in their home. Keep starting it — it is working.",
+    "Bedding Revenue — 5th Place": "At 1915 South, the sleep conversation starts with belief — belief that what we offer genuinely improves lives. Your top-five organizational finish in bedding revenue reflects a consultant who has that belief and acts on it every day. Keep walking every guest through the sleep experience. The impact is real and the results prove it.",
+    "Protection Revenue — 1st Place": "At 1915 South, protection is not a product — it is the value we build with every guest before they ever leave our floor. Leading the entire organization in protection revenue tells us that you connected deeply, communicated value clearly, and gave your guests every reason to say yes. That is what genuine guest advocacy looks like, and you did it better than anyone.",
+    "Protection Revenue — 2nd Place": "At 1915 South, the best protection conversations are not sales pitches — they are the natural result of a guest who trusts you. Finishing second in the organization in protection revenue reflects a consultant who builds real value at every step of the experience. That connection is what separates you. Keep building it.",
+    "Protection Revenue — 3rd Place": "At 1915 South, protection revenue follows connection — and yours proves it. A top-three organizational finish tells us you are showing up for your guests in a way that earns trust and creates value far beyond the sale. We see the work behind these numbers and we are proud to recognize it.",
+    "Protection Revenue — 4th Place": "At 1915 South, every protection conversation starts with connection and ends with a guest who feels genuinely cared for. Your top-five organizational finish in protection revenue reflects a consultant who understands that value is built, not pitched. Keep investing in your guests — it is showing up in a big way.",
+    "Protection Revenue — 5th Place": "At 1915 South, the consultants who finish at the top in protection are the ones who make their guests feel genuinely valued — and you are one of them. A top-five organizational finish reflects real connection and a commitment to delivering value that lasts well beyond the transaction. Keep going.",
+    "Rising Star — 1st Place (SPH)": "At 1915 South, we are always watching for the consultants who are going to define the next chapter of this organization — and you are one of them. Leading the organization in Sales Per Hour is an elite achievement that speaks to your efficiency, your energy, and your ability to make every moment on the floor count. You are the future of 1915 South, and we are investing in you.",
+    "Rising Star — 2nd Place (SPH)": "At 1915 South, Sales Per Hour is one of the truest measures of a consultant's impact — and you finished second in the entire organization. That is not a coincidence. It is the result of preparation, focus, and a genuine commitment to every guest you serve. You are rising fast, and we could not be more excited about your future here.",
+    "Rising Star — 3rd Place (SPH)": "At 1915 South, how you spend your time on the floor tells the story of who you are as a consultant. A top-three organizational finish in SPH says everything about your focus and your drive. You are exactly the kind of talent this organization is built to develop. Keep climbing — the best is still in front of you.",
+    "Store of the Quarter": "At 1915 South, we hold ourselves to a standard of excellence in everything we do — for our guests, our teams, and our communities. Earning Store of the Quarter means this location led the organization across every key measure of performance. That is a reflection of outstanding leadership, a committed team, and a culture that delivers every single day. We are honored to recognize you.",
+    "SPG to Budget — Top Store": "At 1915 South, Sales Per Guest is one of the most powerful indicators of how well we are serving the people who walk through our doors. Leading the organization in SPG growth against budget means this team maximized every opportunity and every conversation. That is the definition of running the play. We are proud of this result.",
+    "Application % — Top Store": "At 1915 South, we are committed to making quality living accessible to every guest we serve. Leading the organization in application percentage means this store is consistently opening financial doors for families who need them. That is a mission that goes beyond the sale — and this team is living it out every day.",
+    "BSPG to Budget — Top Store": "At 1915 South, the sleep mission is one of the cornerstones of who we are. Leading the organization in Bedding SPG to budget means this team is having the right conversations, with the right guests, at the right level — consistently. That takes discipline and belief, and we are proud to recognize a team that delivers on both.",
+    "Protected and Delivered": "At 1915 South, this award represents the highest standard of guest care — and this team set that standard for the entire organization. Measured by BOS and the highest combined performance across the organization, this store proved that when connection is real and value is communicated with conviction, guests say yes. You did not just protect furniture — you protected relationships. We are proud of what this team built.",
+
+    "Top Sales Consultant": "At 1915 South, great sales start with great connections — and you made more of them than anyone on this team. Leading your store in sales this quarter reflects a consultant who shows up with energy, belief, and a genuine commitment to every guest who walks through the door. This team is better because of how you compete every single day. We are proud of you.",
+    "Top Written Revenue": "At 1915 South, written revenue is the result of real connection — and yours led this entire store. You showed up, you built trust, and you converted that trust into results that elevated the whole team. What you accomplished this quarter is a reflection of your work ethic and your belief in the process. Keep going — you are just getting started.",
+    "Top Application Total": "At 1915 South, giving every guest access to their buying power is one of the greatest things we can do for them — and you did it more than anyone on this team. Your commitment to the finance conversation opened doors for families in this community and set the standard for how we serve our guests. That is something to be incredibly proud of.",
+    "Top Bedding Revenue": "At 1915 South, the healthy sleep conversation changes lives — and you had it more consistently than anyone on this team. Leading your store in bedding revenue means you started the conversation, you believed in it, and your guests left better for it. Every family sleeping better tonight is a reflection of the work you did this quarter.",
+    "Top Protection Revenue": "At 1915 South, the best protection results come from the deepest connections — and yours proves it. Leading this store in protection revenue means you built trust, communicated value, and gave your guests every reason to say yes. You did not just sell a plan — you gave your guests peace of mind. That matters.",
+    "Top SPH": "At 1915 South, Sales Per Hour is one of the clearest measures of how efficiently and effectively you serve your guests — and you led this team. Your ability to make every moment on the floor count reflects a consultant who is prepared, focused, and fully present for every guest. That level of performance sets the standard for everyone around you.",
+    "Most Improved": "At 1915 South, we believe in growth — and you embodied it this quarter more than anyone on this team. The improvement you showed was not an accident. It was the result of hard work, a willingness to learn, and a commitment to getting better every single day. We see that effort and we are incredibly proud of the consultant you are becoming.",
+    "Rising Star": "At 1915 South, we are always watching for the people who are going to define the future of this team — and you are one of them. The energy, the effort, and the results you brought this quarter speak for themselves. You are rising for a reason. We are investing in you and excited for everything still ahead.",
+    "Guest Experience Award": "At 1915 South, the guest experience is everything — and yours was exceptional this quarter. This award reflects a consultant who makes every guest feel welcomed, valued, and cared for from the moment they walk in to the moment they leave. The reviews, the connections, and the trust you built this quarter represent exactly who we are as an organization.",
+    "Team Player of the Quarter": "At 1915 South, great teams are built by people who lift others up — and you did that better than anyone this quarter. Whether it was supporting a teammate, stepping up without being asked, or simply showing up with a great attitude every day, you made this team better. That kind of character is the foundation of everything we build here.",
+    "Rookie of the Quarter": "At 1915 South, starting a new career takes courage — and you came out of the gate with everything we could ask for. The results you delivered in your first quarter reflect a consultant who listened, learned, and executed with a level of confidence that most take much longer to find. You belong here, and we are excited to watch you grow.",
+    "Leadership Award": "At 1915 South, leadership is not a title — it is a choice made every day. This quarter, you chose to lead. You brought energy to this team when it was needed, set a standard others followed, and showed what it looks like to be fully committed to something bigger than yourself. We are honored to recognize the leader you are.",
+    "Custom Award": "At 1915 South, we believe in recognizing excellence in all its forms. This award represents a standard of performance, character, and commitment that sets you apart. What you accomplished this quarter reflects the very best of who we are as an organization — and we are proud to celebrate you.",
+  };
+
+  function update() {
+    const name      = document.getElementById('recipientName').value || 'Recipient Name';
+    const store     = document.getElementById('storeName').value || '';
+    const selected  = document.getElementById('awardTitle').value;
+    const custom    = document.getElementById('customAward').value.trim();
+    const award     = custom || selected;
+    const quarter   = document.getElementById('quarter').value;
+    const presenter = document.getElementById('presenterName').value || 'Presenter';
+    const presTitle = document.getElementById('presenterTitle').value || '';
+    const [q, yr]   = quarter.split(' ');
+
+    const signer2   = document.getElementById('signer2Name').value || 'Justin Woods';
+    const sig2Title = document.getElementById('signer2Title').value || 'President';
+
+    document.getElementById('certRecipient').textContent    = name;
+    document.getElementById('certStore').textContent        = store;
+    document.getElementById('certAwardTitle').textContent   = award;
+    document.getElementById('certQuarter').textContent      = `${quarter} · Certificate of Excellence`;
+    document.getElementById('certBodyText').textContent     = bodyText[award] || bodyText[selected] || '';
+    document.getElementById('dateBox').textContent          = `${q} · ${yr}`;
+    document.getElementById('presenterSig').textContent     = presenter;
+    document.getElementById('presenterSigName').textContent = presenter;
+    document.getElementById('presenterSigTitle').textContent = presTitle;
+    document.getElementById('signer2Sig').textContent       = signer2;
+    document.getElementById('signer2SigName').textContent   = signer2;
+    document.getElementById('signer2SigTitle').textContent  = sig2Title;
+  }
+
+  update();
+</script>
+</body>
+</html>
