@@ -109,6 +109,27 @@
     display: flex;
     flex-direction: column;
     position: relative;
+    box-sizing: border-box;
+  }
+
+  /* Outer border */
+  .cert::before {
+    content: '';
+    position: absolute;
+    inset: 10px;
+    border: 2.5px solid var(--navy);
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* Inner orange accent border */
+  .cert::after {
+    content: '';
+    position: absolute;
+    inset: 16px;
+    border: 1.5px solid var(--orange);
+    pointer-events: none;
+    z-index: 10;
   }
 
   /* ── TOP LOGO AREA (matches slide 1 layout) ── */
@@ -452,8 +473,8 @@
         <option>Rising Star — 2nd Place (SPH)</option>
         <option>Rising Star — 3rd Place (SPH)</option>
         <option>Store of the Quarter</option>
-        <option>Top Finance Store</option>
-        <option>SPG to Budget — Top Store</option>
+        <option>Top Finance Location</option>
+        <option>Top SPG to Budget Location</option>
         <option>The Healthy Sleep Destination</option>
         <option>Top Bundler</option>
         <option>Top Bundler Location</option>
@@ -666,9 +687,9 @@
     "Rising Star — 2nd Place (SPH)": "At 1915 South, Sales Per Hour is one of the truest measures of a consultant's impact — and you finished second in the entire organization. That is not a coincidence. It is the result of preparation, focus, and a genuine commitment to every guest you serve. You are rising fast, and we could not be more excited about your future here.",
     "Rising Star — 3rd Place (SPH)": "At 1915 South, how you spend your time on the floor tells the story of who you are as a consultant. A top-three organizational finish in SPH says everything about your focus and your drive. You are exactly the kind of talent this organization is built to develop. Keep climbing — the best is still in front of you.",
     "Store of the Quarter": "At 1915 South, we hold ourselves to a standard of excellence in everything we do — for our guests, our teams, and our communities. Earning Store of the Quarter means this location led the organization across every key measure of performance. That is a reflection of outstanding leadership, a committed team, and a culture that delivers every single day. We are honored to recognize you.",
-    "SPG to Budget — Top Store": "At 1915 South, Sales Per Guest is one of the most powerful indicators of how well we are serving the people who walk through our doors. Leading the organization in SPG growth against budget means this team maximized every opportunity and every conversation. That is the definition of running the play. We are proud of this result.",
+    "Top SPG to Budget Location": "At 1915 South, Sales Per Guest is one of the most powerful indicators of how well we are serving the people who walk through our doors. Leading the organization in SPG growth against budget means this team maximized every opportunity and every conversation. That is the definition of running the play. We are proud of this result.",
     "The Healthy Sleep Destination": "At 1915 South, the healthy sleep conversation is one of the most important things we do — and this store proved they are having it at the highest level in the organization. This award was earned through a combined scoring of BSPG to budget percentage and actual BSPG dollar performance, meaning this team not only outperformed their budget expectation, they delivered real bedding revenue that showed up in the numbers. That takes a team that believes in the sleep mission, starts the conversation every time, and executes it with consistency and conviction. We are proud to recognize what this store built.",
-    "Top Finance Store": "At 1915 South, the finance conversation is one of the four cornerstones of how we serve every guest — and this store executed it better than anyone in the organization. Measured by application volume, finance rate of sales, and finance rate of orders, this team proved that buying power is not an afterthought. It is a strategy they live every single day. We are proud to recognize the top finance store in 1915 South.",
+    "Top Finance Location": "At 1915 South, the finance conversation is one of the four cornerstones of how we serve every guest — and this store executed it better than anyone in the organization. Measured by application volume, finance rate of sales, and finance rate of orders, this team proved that buying power is not an afterthought. It is a strategy they live every single day. We are proud to recognize the top finance store in 1915 South.",
 
     "Outlet of the Quarter": "At 1915 South, our outlet locations carry a unique mission — delivering an exceptional guest experience and strong performance in a distinct retail environment. This quarter, this team rose above the competition and earned the recognition of Outlet of the Quarter. The effort, the consistency, and the results reflect a standard of excellence we are proud to celebrate.",
 
